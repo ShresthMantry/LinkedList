@@ -125,19 +125,19 @@ void sort(Node head)
     }
 }
 
-void sortK(Node head, int size)
+void sortK(Node head,int size)
 {
-
-    if (head == NULL)
-        return;
-
-    Node curr = head;
+    if(head==NULL)
+    {
+        return ;
+    }
     int k = 1;
-    while (curr && k <= size)
+    Node curr = head;
+    while(curr && k<=size)
     {
         Node node = curr->next;
-        int count = size - k;
-        while (node && count > 0)
+        int count = size-k;
+        while(node && count>0)
         {
             if (curr->data > node->data)
             {
@@ -146,12 +146,13 @@ void sortK(Node head, int size)
                 node->data = temp;
             }
             node = node->next;
+            count--;
         }
         curr = curr->next;
         k++;
     }
+    sortK(curr,size);
 
-    sortK(curr, size);
 }
 
 int getLen(Node head)
